@@ -1,0 +1,45 @@
+//Obtiene todos los vehiculos 
+###
+GET http://localhost:3006/vehiculos/ HTTP/1.1
+
+//Obtiene todos los vehiculos 
+###
+GET http://localhost:3006/vehiculos/6540b3ad05e49cc3224265ec  HTTP/1.1
+
+//Obtiene vehiculos por modelo y año
+###
+GET http://localhost:3006/vehiculos/VMW&2020  HTTP/1.1
+
+//Registro del vehiculo
+###
+POST http://localhost:3006/vehiculos/add HTTP/1.1
+Content-Type: application/json
+
+{
+"modelo": "AUDI",
+"año": 2022,
+"color": "Rojo mate",
+"precio": 51100,
+"estado": "Nuevo",
+"estatus": "en venta"
+}
+###
+//Editar contenido del vehiculo por estado
+PUT http://localhost:3006/vehiculos/precio HTTP/1.1
+Content-Type: application/json
+
+{
+"modelo": "VMW",
+"date": 2020,
+"color": "Negro mate",
+"precio": 20000
+}
+
+###
+//Editar el estatus del 
+PUT http://localhost:3006/vehiculos/vendido/6540b3ad05e49cc3224265ec HTTP/1.1
+Content-Type: application/json
+
+###
+//Eliminacion de publicacion por fecha
+DELETE  http://localhost:3006/vehiculos/delet/65418004e32ba29f036eed04 HTTP/1.1

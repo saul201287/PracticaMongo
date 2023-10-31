@@ -6,7 +6,8 @@ const vehiculoSchema = new mongoose.Schema({
   año:{ type: Number , require: true},
   color:{ type: String , require: true},
   precio: {type: Number , require: true},
-  estado: {type: String , require: true},
+  estado: { type: String, require: true },
+  estatus: { type: String , require: true}
 });
 
 module.exports = mongoose.model('Vehiculo', vehiculoSchema);
