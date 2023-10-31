@@ -10,7 +10,7 @@ app.listen(port, () => console.log("Escuchando en el puerto ", port));
 
 // Conexion a MongoDB
 mongoose
-  .connect("mongodb://localhost/Concesionaria", {
+  .connect("mongodb://127.0.0.1/Concesionaria", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
