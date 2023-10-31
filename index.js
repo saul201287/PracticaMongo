@@ -1,10 +1,18 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const routeClient = require("./routers/Cliente.route");
+const routCar = require("./routers/Vehiculo.route");
+const routeSeller = require("./routers/Vendedores.route");
+const routeSales = require("./routers/Ventas.route");
 const app = express();
 app.use(express.json());
-require("dotenv").config();
 mongoose.set("strictQuery", false);
 const port = 3006;
+
+app.use("/clientes",routeClient);
+app.use("/vehiculos",routCar);
+app.use("/vendedores",routeSeller);
+app.use("/ventas",routeSales);
 
 app.listen(port, () => console.log("Escuchando en el puerto ", port));
 

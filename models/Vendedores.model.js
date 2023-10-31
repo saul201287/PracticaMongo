@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const vendedorSchema = new mongoose.Schema({
-  nombre: {type: string , require: true},
-  apellido: {type: string , require: true},
-  // Otros campos de vendedor xd
+  nombre: {type: String , require: true},
+  apellido: {type: String , require: true},
+  
 });
 
 module.exports = mongoose.model('Vendedor', vendedorSchema);

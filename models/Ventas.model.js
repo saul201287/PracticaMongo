@@ -10,4 +10,4 @@ const ventaSchema = new mongoose.Schema({
   devoluciones: [{ fechaDevolucion: Date, motivo: String }],
 });
 
-module.exports = mongoose.model('Venta', ventaSchema);
+module.exports = mongoose.model('Ventas', ventaSchema);
