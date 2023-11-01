@@ -7,7 +7,6 @@ const ventaSchema = new mongoose.Schema({
   vehiculo: { type: mongoose.Schema.Types.ObjectId, ref: 'Vehiculo' },
   precioVenta: { type: Number, require:true},
   pagos: [{ fechaPago: Date, monto: Number ,require:true }],
-  devoluciones: [{ fechaDevolucion: Date, motivo: String , require:true}],
 });
 
 module.exports = mongoose.model('Ventas', ventaSchema);
