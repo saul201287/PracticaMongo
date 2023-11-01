@@ -1,0 +1,11 @@
+###
+POST http://localhost:3006/vendedores/add HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Michel",
+    "apellido":"Vazquez"
+}
+
+###
+GET http://localhost:3006/vendedores/ HTTP/1.1

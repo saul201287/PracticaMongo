@@ -16,12 +16,12 @@ POST http://localhost:3006/clientes/add HTTP/1.1
 Content-Type: application/json
 
 {
-"nombre": "ana",
-"apellido": "santos santos",
-"direccion": "alado del mercado",
+"nombre": "Jose Saul",
+"apellido": "Gomez Caballero",
+"direccion": "2da Nte Ote",
 "historialCompras":[
     {
-        "vehiculo": "65412c14b01884d186284306",
+        "vehiculo": "6541a3ee48f295e658002e4e",
         "fecha": "2023-10-11"
     }
 ]

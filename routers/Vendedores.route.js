@@ -3,6 +3,7 @@ const Vendedores = require("../models/Vendedores.model");
 
 routeSeller.get("/", async (req, res) => {
     const vendedores = await Vendedores.find();
+    res.json(vendedores);
 } );
 
 routeSeller.get("/:id", async (req, res) => {
@@ -10,7 +11,7 @@ routeSeller.get("/:id", async (req, res) => {
     res.json(vendedor);
 });
 
-routeSeller.post("/", async (req, res) => {
+routeSeller.post("/add", async (req, res) => {
     const vendedor = await Vendedores.create(req.body);
     res.json(vendedor);
 });
