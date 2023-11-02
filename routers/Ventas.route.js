@@ -39,26 +39,40 @@ routeSales.post("/add", async (req, res) => {
 
 });
 
-routeSales.put("/:id", (req, res) => {
-  const Ventas = require('./models/ventas');
 
-  routeSales.put("/update", async (req, res) => {
-    const { clienteNombre, vendedorNombre, fechaVenta, vehiculoId, pagos, fechaPago } = req.body;
+
+  routeSales.post("/actualizarPagos", async (req, res) => {
+    const { clienteNombre, vendedorNombre, fechaVenta, vehiculoId, monto, fechaPago } = req.body;
     try {
+      const cliente = await Clientes.findOne({
+        nombre: { $regex: clienteNombre, $options: "i" },
+      })
+      if (!cliente) {
+        res.status(404).send("Cliente no encontrado");
+        console.log("Cliente no encontrado");
+        return;
+      }
+      const vendedor = await Vendedor.findOne({
+        nombre: { $regex: vendedorNombre, $options: "i" },
+      });
+      if (!vendedor) {
+        res.status(404).send("Vendedor no encontrado");
+        console.log("Vendedor no encontrado");
+        return;
+      }
       const venta = await Ventas.findOne({
-        "Cliente.nombre": { $regex: clienteNombre, $options: "i" },
-        "Vendedor.nombre": { $regex: vendedorNombre, $options: "i" },
+        "cliente": cliente._id,
+        "vendedor": vendedor._id,
         fechaVenta: new Date(fechaVenta),
         "Vehiculo.vehiculoId": vehiculoId
       });
-  
+      const datos = {fechaPago, monto};
       if (!venta) {
         res.status(404).send("Venta no encontrada");
         console.log("Venta no encontrada");
         return;
       }else{
-        venta.pagos = pagos;
-        venta.fechaPago = fechaPago;
+        venta.pagos.push (datos);
         await venta.save();
         res.status(200).send("Venta actualizada");
         console.log("Venta actualizada");
@@ -69,8 +83,6 @@ routeSales.put("/:id", (req, res) => {
       res.status(500).send("Error al actualizar la venta");
     }
   });
-    res.json(Ventas);
-});
 
 routeSales.delete("/delete", async (req, res) => {
     const { clienteNombre, vendedorNombre, fechaVenta } = req.body;
